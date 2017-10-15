@@ -9751,7 +9751,7 @@ var React = __webpack_require__(49);
 var ReactDOM = __webpack_require__(98);
 var App = __webpack_require__(184);
 
-ReactDOM.render(React.createElement(App, { name: 'I am a message' }), document.getElementById('app'));
+ReactDOM.render(React.createElement(App, null), document.getElementById('app'));
 
 /***/ }),
 /* 83 */
@@ -22383,26 +22383,35 @@ module.exports = ReactDOMInvalidARIAHook;
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Message = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./app/components/Message.js\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+var _this = this;
+
 var React = __webpack_require__(49);
 var App = React.createClass({
   displayName: 'App',
 
+
+  getInitialState: function () {
+
+    return {
+      count: 0
+    };
+  },
+
+  start: () => {
+    var count = setInterval(_this.count++, 1000);
+
+    _this.state.count = count;
+  },
+
   render: function () {
     return React.createElement(
-      'div',
-      { className: 'main' },
-      React.createElement(
-        'h1',
-        null,
-        'Hello ',
-        this.props.name
-      )
+      'h1',
+      null,
+      ' Time up: ',
+      this.start
     );
   }
 });
-
-// ReactDOM.render goes here:
 
 module.exports = App;
 
